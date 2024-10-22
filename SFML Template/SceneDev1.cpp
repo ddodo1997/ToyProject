@@ -10,30 +10,40 @@ SceneDev1::SceneDev1()
 void SceneDev1::Init()
 {
 	std::cout << "SceneDev1::Init()" << std::endl;
-	GameObject* obj = AddGo(new SpriteGo("graphics/background.png"));
-	obj->SetOrigin(Origins::MC);
-	obj->SetPosition({ 1920 / 2, 1080 / 2 });
+	SpriteGo* backGround = AddGo(new SpriteGo("graphics/bg_night.png"));
+	backGround->SetOrigin(Origins::MC);
+	backGround->SetPosition({ 600 / 2, 800 / 2 });
+	//backGround->SetScale({ 3.f, 1.2f });
 
-	GameObject* text = AddGo(new TextGo("fonts/KOMIKAP_.ttf"));
-	text->SetOrigin(Origins::TL);
-	text->SetPosition({ 0.f,0.f });
-	text->SetString("Dev1");
+	SpriteGo* tile = AddGo(new SpriteGo("graphics/tile.png"));
+	tile->SetOrigin(Origins::BC);
+	tile->SetPosition({ 600 / 2,800 });
+	TextGo* title = AddGo(new TextGo("fonts/Cafe24Decobox.ttf"));
+	title->SetOrigin(Origins::BC);
+	title->SetPosition({ 600 / 2, 800 / 3});
+	title->SetString("FlappyBird");
+	title->SetCharacterSize(130);
+	//s = vt
+	//이동거리 = 속도 * 시간
+	//속도 = 가속도 * 시간
 	Scene::Init();
 }
 
 void SceneDev1::Enter()
 {
 	std::cout << "SceneDev1::Enter()" << std::endl;
-	TEXTURE_MANAGER.Load("graphics/background.png");
-	FONT_MANAGER.Load("fonts/KOMIKAP_.ttf");
+	TEXTURE_MANAGER.Load("graphics/bg_night.png");
+	TEXTURE_MANAGER.Load("graphics/tile.png");
+	FONT_MANAGER.Load("fonts/Cafe24Decobox.ttf");
 	Scene::Enter();
 }
 
 void SceneDev1::Exit()
 {
 	std::cout << "SceneDev1::Exit()" << std::endl;
-	TEXTURE_MANAGER.UnLoad("graphics/background.png");
-	FONT_MANAGER.UnLoad("fonts/KOMIKAP_.ttf");
+	TEXTURE_MANAGER.UnLoad("graphics/bg_night.png");
+	TEXTURE_MANAGER.UnLoad("graphics/tile.png");
+	FONT_MANAGER.UnLoad("fonts/Cafe24Decobox.ttf");
 	Scene::Exit();
 }
 
@@ -43,7 +53,7 @@ void SceneDev1::Update(float dt)
 
 	if (InputMgr::GetKeyDown())
 	{
-		SCENE_MANAGER.Instance().ChangeScene(SceneIds::Dev2);
+		SCENE_MANAGER.ChangeScene(SceneIds::Dev2);
 	}
 }
 

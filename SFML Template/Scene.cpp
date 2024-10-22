@@ -61,15 +61,6 @@ void Scene::Draw(sf::RenderWindow& window)
     }
 }
 
-GameObject* Scene::AddGo(GameObject* obj)
-{
-    if (std::find(gameObject.begin(), gameObject.end(), obj) == gameObject.end())
-    {
-        gameObject.push_back(obj);
-    }
-
-    return obj;
-}
 
 void Scene::RemoveGo(GameObject* obj)
 {

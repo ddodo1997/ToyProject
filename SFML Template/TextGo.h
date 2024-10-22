@@ -14,10 +14,11 @@ public:
 
 	void Reset() override;
 	void SetPosition(const sf::Vector2f& pos) override;
-	void SetString(const std::string str)override;
+	void SetString(const std::string str);
 	void Draw(sf::RenderWindow& window) override;
 
 	void SetOrigin(const sf::Vector2f& origin)override;
 	void SetOrigin(Origins preset)override;
+	void SetCharacterSize(int size);
 };
 
