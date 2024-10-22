@@ -1,47 +1,9 @@
-﻿#include <iostream>
-#include <SFML/Graphics.hpp>
+﻿#include "stdafx.h"
+
 int main()
 {
-	sf::VideoMode vm(1920, 1080);
-	sf::RenderWindow window(vm, "Flappy bird");
-
-
-	while (window.isOpen())
-	{
-		//매 프레임 초기화
-
-		//이벤트
-		sf::Event ev;
-		while (window.pollEvent(ev))
-		{
-			switch (ev.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-
-			case sf::Event::KeyPressed:
-				switch (ev.key.code)
-				{
-				case sf::Keyboard::Escape:
-					window.close();
-					break;
-				default:
-					break;
-				}
-				break;
-
-			default:
-				break;
-			}
-		}
-
-
-		//업데이트
-
-		window.clear();
-		//드로우
-		window.display();
-	}
+	FRAMEWORK.Init(1920,1080,"SFML Framework!!!");
+	FRAMEWORK.Do();
+	FRAMEWORK.Release();
 	return 0;
 }
