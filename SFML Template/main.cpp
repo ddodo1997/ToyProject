@@ -24,8 +24,8 @@ int main()
 				switch (ev.key.code)
 				{
 				case sf::Keyboard::Escape:
-				window.close();
-				break;
+					window.close();
+					break;
 				default:
 					break;
 				}
@@ -43,6 +43,5 @@ int main()
 		//드로우
 		window.display();
 	}
-
 	return 0;
 }
