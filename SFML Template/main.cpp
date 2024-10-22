@@ -1,5 +1,5 @@
 ﻿#include "stdafx.h"
-
+//fuck
 int main()
 {
 	FRAMEWORK.Init(1920,1080,"SFML Framework!!!");
