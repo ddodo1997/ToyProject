@@ -8,6 +8,7 @@ protected:
 	sf::Vector2f position;
 	Origins originPreset;
 	sf::Vector2f origin;
+
 public:
 	GameObject(const std::string& name = "");
 	~GameObject() = default;
@@ -25,8 +26,6 @@ public:
 		originPreset = Origins::Custom;
 	}
 	virtual void SetOrigin(Origins preset);
-
-	virtual void SetString(std::string str) {}
 
 	const std::string& GetName() const { return name; }
 	virtual void SetName(const std::string& name) {this->name = name;}

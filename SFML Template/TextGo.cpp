@@ -41,3 +41,8 @@ void TextGo::SetOrigin(Origins preset)
 	originPreset = preset;
 	origin = Utils::SetOrigin(text, preset);
 }
+
+void TextGo::SetCharacterSize(int size)
+{
+	text.setCharacterSize(size);
+}

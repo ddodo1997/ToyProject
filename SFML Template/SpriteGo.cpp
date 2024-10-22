@@ -37,3 +37,8 @@ void SpriteGo::SetOrigin(Origins preset)
 	originPreset = preset;
 	origin = Utils::SetOrigin(sprite, preset);
 }
+
+void SpriteGo::SetScale(const sf::Vector2f& scale)
+{
+	sprite.setScale(scale);
+}

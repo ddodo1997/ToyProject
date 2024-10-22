@@ -17,4 +17,6 @@ public:
 
 	void SetOrigin(const sf::Vector2f& origin)override;
 	void SetOrigin(Origins preset)override;
+
+	void SetScale(const sf::Vector2f& scale);
 };
