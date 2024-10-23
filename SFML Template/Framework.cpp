@@ -5,7 +5,6 @@ void Framework::Init(int width, int height, const std::string& title)
 	//세이브로드 데이터, 데이터 테이블, 끝날때까지 사용할 리소스.. 등등
 	window.create(sf::VideoMode(width, height), title);
 	SCENE_MANAGER.Init();
-
 }
 
 void Framework::Do()
@@ -20,7 +19,6 @@ void Framework::Do()
 		time += deltaTime;
 
 		InputMgr::Clear();
-
 
 		//이벤트
 		sf::Event event;

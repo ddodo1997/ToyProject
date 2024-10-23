@@ -4,7 +4,7 @@
 class SceneDev1 : public Scene
 {
 protected:
-
+	std::vector<std::string> nameOfBirds;
 public:
 	SceneDev1();
 	~SceneDev1() = default;

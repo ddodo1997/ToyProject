@@ -42,7 +42,7 @@ void SceneDev2::Update(float dt)
 {
 	Scene::Update(dt);
 
-	if (InputMgr::GetKeyDown())
+	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
 	{
 		SCENE_MANAGER.ChangeScene(SceneIds::Dev1);
 	}

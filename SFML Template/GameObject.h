@@ -6,8 +6,8 @@ protected:
 	std::string name;
 	bool active = true;
 	sf::Vector2f position;
-	Origins originPreset;
 	sf::Vector2f origin;
+	Origins originPreset;
 
 public:
 	GameObject(const std::string& name = "");

@@ -20,7 +20,9 @@ void Scene::Release()
     for (auto obj : gameObject)
     {
         obj->Release();
+        delete obj;
     }
+    gameObject.clear();
 }
 
 

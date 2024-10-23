@@ -35,4 +35,3 @@ public:
 	void Draw(sf::RenderWindow& window);
 };
 
-#define SCENE_MANAGER (SceneMgr::Instance())
