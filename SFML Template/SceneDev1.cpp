@@ -84,8 +84,6 @@ void SceneDev1::Init()
 	choose->SetCharacterSize(100);
 	choose->SetActive(false);
 
-
-
 	Scene::Init();
 }
 
@@ -100,7 +98,6 @@ void SceneDev1::Enter()
 	arrowIndex = 0;
 	FindGo<TextGo>("Title")->SetActive(true);
 	FindGo<TextGo>("GameStart")->SetActive(true);
-
 	FindGo<TextGo>("ChooseChar")->SetActive(false);
 	for (int i = 0; i < numOfBirds; i++)
 	{
