@@ -1,10 +1,17 @@
 #pragma once
 #include "stdafx.h"
 #include "Scene.h"
+#include "SpriteGo.h"
+#include "TextGo.h"
+
 class SceneDev1 : public Scene
 {
 protected:
-	std::vector<std::string> nameOfBirds;
+	const int numOfBackGrounds = 4;
+	const int numOfTiles = 10;
+	const int numOfBirds = 3;
+	int arrowIndex = 0;
+	bool isTitle = true;
 public:
 	SceneDev1();
 	~SceneDev1() = default;

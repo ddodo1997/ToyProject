@@ -1,5 +1,5 @@
 #pragma once
-
+#include "SpriteGo.h"
 /// <summary>
 /// GameObject들의 집합
 /// </summary>
@@ -7,7 +7,6 @@ class Scene
 {
 protected:
 	const SceneIds id;
-
 	std::list<GameObject*> gameObject;
 
 public:
@@ -27,7 +26,8 @@ public:
 	inline T* AddGo(T* obj);
 	virtual void RemoveGo(GameObject* obj);
 
-	virtual GameObject* FindGo(const std::string& name);
+	template<typename T>
+	inline T* FindGo(const std::string& name);
 	virtual int FindGoAll(const std::string& name, std::list<GameObject*>& list);
 };
 
@@ -40,4 +40,18 @@ inline T* Scene::AddGo(T* obj)
 	}
 
 	return obj;
+}
+
+template<typename T>
+inline T* Scene::FindGo(const std::string& name)
+{
+	for (auto obj : gameObject)
+	{
+		if (obj->GetName() == name)
+		{
+			return obj;
+		}
+	}
+
+	return nullptr;
 }
