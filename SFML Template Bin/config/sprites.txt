@@ -1,9 +1,3 @@
-graphics/birds/bluebird-downflap.png
-graphics/birds/redbird-downflap.png
-graphics/birds/yellowbird-downflap.png
-graphics/birds/bluebird-midflap.png
-graphics/birds/redbird-midflap.png
-graphics/birds/yellowbird-midflap.png
 graphics/birds/bluebird-upflap.png
 graphics/birds/redbird-upflap.png
 graphics/birds/yellowbird-upflap.png
