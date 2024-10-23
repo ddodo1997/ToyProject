@@ -7,7 +7,6 @@
 #include <algorithm>
 ///SFML
 #include <SFML/Graphics.hpp>
-#include <vector>
 
 ///자체 제작 헤더
 #include"Defines.h"

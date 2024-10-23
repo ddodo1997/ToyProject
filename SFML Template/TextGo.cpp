@@ -46,7 +46,3 @@ void TextGo::SetCharacterSize(int size)
 {
 	text.setCharacterSize(size);
 }
-
-
-
-

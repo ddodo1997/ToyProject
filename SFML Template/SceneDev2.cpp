@@ -2,7 +2,6 @@
 #include "SceneDev2.h"
 #include "SpriteGo.h"
 #include "TextGo.h"
-
 SceneDev2::SceneDev2()
 	:Scene(SceneIds::Dev2)
 {
@@ -11,25 +10,14 @@ SceneDev2::SceneDev2()
 void SceneDev2::Init()
 {
 	std::cout << "SceneDev2::Init()" << std::endl;
-	std::vector<SpriteGo*>toppipe;
-
-	const int pipetex = 6;
-	toppipe.push_back(AddGo(new SpriteGo("graphics/pipe.png")));
-	for (int i = 0; i < pipetex; ++i)
-	{
-		toppipe[i]->SetOrigin(Origins::TL);
-		toppipe[i]->SetPosition({ i * 384.f,1080 });
-	}
-	
-
-
-	
-	
+	SpriteGo* player = AddGo(new SpriteGo("graphics/bg_noon.png"));
+	player->SetOrigin(Origins::MC);
+	player->SetPosition({ 1920 / 2,1080 / 2 });
 
 	TextGo* text = AddGo(new TextGo("fonts/Cafe24Decobox.ttf"));
 	text->SetOrigin(Origins::TL);
 	text->SetPosition({ 0.f,0.f });
-	text->SetString("SCORE = 0");
+	text->SetString("Dev2");
 	Scene::Init();
 }
 
