@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Utils.h"
+#include <random>
 
 sf::Vector2f Utils::SetOrigin(sf::Sprite& obj, Origins preset)
 {
@@ -25,4 +26,12 @@ sf::Vector2f Utils::SetOrigin(sf::Text& text, Origins preset)
     text.setOrigin(newOrigin);
 
     return newOrigin;
+}
+
+int Utils::GetRandom(int start, int end)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(start, end);
+    return dis(gen);
 }

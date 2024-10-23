@@ -42,6 +42,35 @@ public:
 
 		return true;
 	}
+
+	bool FLoad(const std::string& fname)
+	{
+		std::ifstream inFile(fname);
+
+		if (!inFile.is_open()) {
+			std::cerr << "파일을 열 수 없습니다." << std::endl;
+			return 1;
+		}
+
+		std::string line;
+		while (std::getline(inFile, line)) {
+
+			if (resources.find(line) != resources.end())
+				return false;
+			T* resource = new T();
+			if (resource->loadFromFile(line))
+			{
+				resources.insert({ line, resource });
+			}
+			else {
+				delete resource;
+			}
+		}
+
+		inFile.close();
+		return true;
+	}
+
 	bool UnLoad(const std::string& id)
 	{
 		auto it = resources.find(id);
@@ -50,6 +79,29 @@ public:
 		
 		delete it->second;
 		resources.erase(it);
+		return true;
+	}
+
+	bool FUnLoad(const std::string& fname)
+	{
+		std::ifstream inFile(fname);
+
+		if (!inFile.is_open()) {
+			std::cerr << "파일을 열 수 없습니다." << std::endl;
+			return 1;
+		}
+
+		std::string line;
+		while (std::getline(inFile, line)) {
+			auto it = resources.find(line);
+			if (it == resources.end())
+				return false;
+
+			delete it->second;
+			resources.erase(it);
+		}
+
+		inFile.close();
 		return true;
 	}
 	T& Get(const std::string& id)

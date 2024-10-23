@@ -2,6 +2,7 @@
 #define TEXTURE_MANAGER (ResourceMgr<sf::Texture>::Instance())
 #define FONT_MANAGER (ResourceMgr<sf::Font>::Instance())
 #define FRAMEWORK (Framework::Instance())
+#define SCENE_MANAGER (SceneMgr::Instance())
 
 /// <summary>
 /// SceneMgr의 Scene 벡터의 인덱스
@@ -16,10 +17,14 @@ enum class SceneIds {
 	Count
 };
 
+/// <summary>
+/// T M B  상 중 하
+/// L C R  좌 중 우
+/// 자주 쓰이는 오리진의 열거형
+/// </summary>
 enum class Origins {
 	None = -1,
-	//T M B
-	//L C R
+
 	TL, TC, TR,
 	ML, MC, MR,
 	BL, BC, BR,

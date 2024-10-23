@@ -2,7 +2,7 @@
 
 int main()
 {
-	FRAMEWORK.Init(600,800,"SFML Framework!!!");
+	FRAMEWORK.Init(1920,1080,"Flappy Bird");
 	FRAMEWORK.Do();
 	FRAMEWORK.Release();
 	return 0;
