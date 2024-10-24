@@ -70,7 +70,18 @@ void Scene::RemoveGo(GameObject* obj)
     gameObject.remove(obj);
 }
 
+GameObject* Scene::FindGo(const std::string& name)
+{
+    for (auto obj : gameObject)
+    {
+        if (obj->GetName() == name)
+        {
+            return obj;
+        }
+    }
 
+    return nullptr;
+}
 
 int Scene::FindGoAll(const std::string& name, std::list<GameObject*>& list)
 {

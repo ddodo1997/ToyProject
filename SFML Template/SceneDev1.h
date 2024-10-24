@@ -8,7 +8,7 @@ class SceneDev1 : public Scene
 {
 protected:
 	const int numOfBackGrounds = 4;
-	const int numOfTiles = 10;
+	const int numOfTiles = 100;
 	const int numOfBirds = 3;
 	int arrowIndex = 0;
 	bool isTitle = true;

@@ -26,8 +26,8 @@ public:
 	inline T* AddGo(T* obj);
 	virtual void RemoveGo(GameObject* obj);
 
-	template<typename T>
-	inline T* FindGo(const std::string& name);
+
+	GameObject* FindGo(const std::string& name);
 	virtual int FindGoAll(const std::string& name, std::list<GameObject*>& list);
 };
 
@@ -40,18 +40,4 @@ inline T* Scene::AddGo(T* obj)
 	}
 
 	return obj;
-}
-
-template<typename T>
-inline T* Scene::FindGo(const std::string& name)
-{
-	for (auto obj : gameObject)
-	{
-		if (obj->GetName() == name)
-		{
-			return obj;
-		}
-	}
-
-	return nullptr;
 }
