@@ -24,7 +24,7 @@ void GameOverText::Release()
 
 void GameOverText::Reset()
 {
-	SetString("\t\tGame Over!!\nPress Enter to New Game");
+	SetString("\t\tGame Over!!\nPress Space to New Game");
 	text.setFillColor(sf::Color::Transparent);
 	text.setOutlineColor(sf::Color::Transparent);
 	text.setOutlineThickness(0);

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TextChoose.h"
+#include "SceneDev1.h"
 
 TextChoose::TextChoose(float x, float y, std::string id, std::string name, std::string str, int size)
 	: GameObject(name), fontId(id)
@@ -54,19 +55,17 @@ void TextChoose::Update(float dt)
 {
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-		if (!isTitle)
+		if (!SceneDev1::isTitle)
 		{
 			SetCharacterSize(80);
 			SetOrigin(Origins::BC);
-			isTitle = true;
 		}
 	}
 	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
 	{
-		if (isTitle)
+		if (SceneDev1::isTitle)
 		{
 			SetCharacterSize(0);
-			isTitle = false;
 		}
 	}
 }

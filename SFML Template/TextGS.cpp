@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TextGS.h"
+#include "SceneDev1.h"
 
 TextGS::TextGS(float x, float y, std::string id, std::string name)
 	: GameObject(name), fontId(id)
@@ -51,18 +52,16 @@ void TextGS::Update(float dt)
 {
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-		if (isTitle)
+		if (!SceneDev1::isTitle)
 		{
 			SetCharacterSize(0);
-			isTitle = false;
 		}
 	}
 	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
 	{
-		if (!isTitle)
+		if (SceneDev1::isTitle)
 		{
 			SetCharacterSize(80);
-			isTitle = true;
 		}
 	}
 }

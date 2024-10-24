@@ -59,14 +59,11 @@ void SceneDev2::Update(float dt)
 {
 	if (isGameOver)
 	{
-		if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
+		if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 			SCENE_MANAGER.ChangeScene(SceneIds::Dev1);
 		return;
 	}
-	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
-	{
-		SCENE_MANAGER.ChangeScene(SceneIds::Dev1);
-	}
+
 	Scene::Update(dt);
 }
 

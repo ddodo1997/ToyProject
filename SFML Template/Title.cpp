@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Title.h"
+#include "SceneDev1.h"
 
 Title::Title(float x, float y, std::string id, std::string name, std::string str, int size)
 	: GameObject(name), fontId(id)
@@ -54,20 +55,18 @@ void Title::Update(float dt)
 {
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-		if (isTitle)
+		if (!SceneDev1::isTitle)
 		{
 			SetCharacterSize(0);
 			SetOrigin(Origins::BC);
-			isTitle = false;
 		}
 	}
 	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
 	{
-		if (!isTitle)
+		if (SceneDev1::isTitle)
 		{
 			SetCharacterSize(120);
 			SetOrigin(Origins::BC);
-			isTitle = true;
 		}
 	}
 }

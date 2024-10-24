@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TextArrow.h"
+#include "SceneDev1.h"
 Arrow TextArrow::Location = Arrow::None;
 TextArrow::TextArrow(float x, float y, std::string id, std::string name)
 	: GameObject(name), fontId(id)
@@ -52,12 +53,12 @@ void TextArrow::Update(float dt)
 {
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-		if (!isChoose)
+		if (!SceneDev1::isTitle)
 		{
 			SetCharacterSize(50);
-			isChoose = true;
 			Location = Arrow::First;
 			SetPosition({ 1920 / 2.4, 475 });
+			isChoose = true;
 		}
 	}
 	if (isChoose)
@@ -65,7 +66,6 @@ void TextArrow::Update(float dt)
 		if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
 		{
 			SetCharacterSize(0);
-			isChoose = false;
 			Location = Arrow::None;
 		}
 

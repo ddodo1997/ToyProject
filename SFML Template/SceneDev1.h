@@ -11,8 +11,8 @@ protected:
 	const int numOfTiles = 100;
 	const int numOfBirds = 3;
 	int arrowIndex = 0;
-	bool isTitle = true;
 public:
+	static bool isTitle;
 	SceneDev1();
 	~SceneDev1() = default;
 	virtual void Init() override;
