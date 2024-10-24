@@ -8,7 +8,7 @@ protected:
 	sf::Vector2f position;
 	sf::Vector2f origin;
 	Origins originPreset;
-
+	
 public:
 	GameObject(const std::string& name = "");
 	~GameObject() = default;
