@@ -1,16 +1,19 @@
 #pragma once
 #include "GameObject.h"
-class Tile :
+class Pipe :
     public GameObject
 {
-private:
-	float x, y;
-	std::string textureId;
-	static float speed;
+protected:
+	std::string textIdUpper, textIdUnder;
+
+	float random[6];
 public:
-	static std::vector<sf::Sprite*> sprite;
-	Tile(float x, float y, const std::string& id);
-	~Tile();
+	static sf::Sprite sprite[6];
+	static sf::Sprite sprite2[6];
+	
+	Pipe(const std::string& textIdUpper, const std::string& textIdUnder,  const std::string& name = "");
+	~Pipe() = default;
+
 	void Init() override;
 	void Release() override;
 	void Reset() override;
@@ -18,7 +21,7 @@ public:
 	void Draw(sf::RenderWindow& window) override;
 	void SetPosition(const sf::Vector2f& position) override;
 	void SetOrigin(const sf::Vector2f& origin) override;
-	void SetOrigin(Origins preset) override;
-	void SetScale(float x, float y);
+	void SetOrigin(sf::Sprite sprite[], Origins preset);
+	
 };
 

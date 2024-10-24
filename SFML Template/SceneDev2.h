@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Scene.h"
+#include "Bird.h"
 class SpriteGo;
 class SceneDev2 :  public Scene
 {
@@ -10,6 +11,7 @@ private:
 	float randhole[6];
 
 public:
+	static bool isGameOver;
 	SceneDev2();
 	~SceneDev2() = default;
 

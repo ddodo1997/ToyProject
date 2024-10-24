@@ -1,15 +1,16 @@
 #pragma once
-class Title
-	:public GameObject
+#include "GameObject.h"
+class TextChoose :
+    public GameObject
 {
 protected:
 	sf::Text text;
 	std::string fontId;
-	bool isTitle;
+	bool isTitle = false;
 public:
-	Title(float x, float y, std::string id, std::string name , std::string str, int size);
-	~Title();	
-	
+	TextChoose(float x, float y, std::string id, std::string name, std::string str, int size);
+	~TextChoose();
+
 	void Init() override;
 	void Release() override;
 	void Reset() override;

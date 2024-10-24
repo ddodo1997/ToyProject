@@ -42,3 +42,10 @@ enum class BirdColor {
 	Red,
 	Yellow
 };
+
+enum class Arrow {
+	None = -1,
+	First,
+	Second,
+	Third
+};

@@ -17,7 +17,6 @@ void TextGS::Init()
 	auto& tempFont = FONT_MANAGER.Get(fontId);
 	text.setFont(tempFont);
 	SetOrigin(Origins::BC);
-	SetString("Press Enter To Start!");
 	SetCharacterSize(80);
 }
 
