@@ -1,9 +1,13 @@
 #pragma once
 #include "stdafx.h"
 #include "Scene.h"
+class SpriteGo;
 class SceneDev2 :  public Scene
 {
-protected:
+private:
+	std::vector<SpriteGo*> toppipe;
+	std::vector<SpriteGo*> underpipe;
+	float randhole[6];
 
 public:
 	SceneDev2();
@@ -15,5 +19,6 @@ public:
 
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow& window) override;
+
 };
 

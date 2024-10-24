@@ -2,10 +2,13 @@
 #include "SceneDev2.h"
 #include "SpriteGo.h"
 #include "TextGo.h"
+<<<<<<< HEAD
 #include "Pipe.h"
 #include "Bird.h"
 #include "BackGround.h"
 #include "Tile.h"
+=======
+>>>>>>> origin/main
 #include <time.h>
 SceneDev2::SceneDev2()
 	:Scene(SceneIds::Dev2)
@@ -15,6 +18,7 @@ SceneDev2::SceneDev2()
 void SceneDev2::Init()
 {
 	std::cout << "SceneDev2::Init()" << std::endl;
+<<<<<<< HEAD
 	for (int i = 0; i < 4; i++)
 	{
 		AddGo(new BackGround(i * 640.f, 1080, "graphics/bg_noon.png"));
@@ -24,53 +28,45 @@ void SceneDev2::Init()
 	
 	////위파이프 위치
 	//float randhole[6];
+=======
 
-	//for (int i = 0; i < 6; i++)
-	//{
-	//	randhole[i] = rand() % 750;
-	//}
-	////위쪽파이프
-	//std::vector<SpriteGo*>toppipe;
-	//const int Toppipetex = 6;
-	//const float pipedistance = 500;
-	//for (int i = 0; i < Toppipetex; ++i)
-	//{
-	//	toppipe.push_back(AddGo(new SpriteGo("graphics/toppipe.png")));
-	//	toppipe[i]->SetOrigin(Origins::TC);
-	//	toppipe[i]->SetPosition({ i * pipedistance + 1000,-720+ randhole[i]});
-	//	toppipe[i]->SetScale({ 1.0f,2.0f });
-	//	
-	//}
-	
-	////아래쪽파이프
-	//std::vector<SpriteGo*>underpipe;
-	//const int underpipetex = 6;
-	////아래파이프 위치
-	//for (int i = 0; i < underpipetex; ++i)
-	//{
-	//	underpipe.push_back(AddGo(new SpriteGo("graphics/underpipe.png")));
-	//	underpipe[i]->SetOrigin(Origins::BC);
+>>>>>>> origin/main
 
-	//	underpipe[i]->SetPosition({ i * pipedistance+1000, 1080+ randhole[i]});
-	//	underpipe[i]->SetScale({ 1.0f,2.0f });
-	//}
-	//속도 
-	//스코어 폰트
-#pragma endregion
-	int numOfPipes = 100;
-	std::vector<Pipe*> pipes;
-	for (int i = 1; i <= numOfPipes; ++i)
+	srand(time(NULL));
+
+	//위파이프 위치
+
+	for (int i = 0; i < 6; i++)
 	{
-		Pipe* p = new Pipe(1000.0f + (200.0f * i), 0);
-		pipes.push_back(p);
-		p->SetScale(Utils::GetRandom(1, 10) * 0.15f);
+		randhole[i] = (float)(rand() % 750);
 	}
-	(*pipes.begin())->SetSpeed(300.f);
-	for (auto pipe : pipes)
+	//위쪽파이프
+	const int Toppipetex = 6;
+	const float pipedistance = 500;
+
+	for (int i = 0; i < Toppipetex; ++i)
 	{
-		Scene::AddGo(pipe);
+		toppipe.push_back(AddGo(new SpriteGo("graphics/toppipe.png")));
+		toppipe[i]->SetOrigin(Origins::TC);
+		toppipe[i]->SetPosition({ i * pipedistance + 1000,-720 + randhole[i] });
+		toppipe[i]->SetScale({ 1.0f,2.0f });
+
 	}
+
+	//아래쪽파이프
 	
+	const int underpipetex = 6;
+	//아래파이프 위치
+	for (int i = 0; i < underpipetex; ++i)
+	{
+		underpipe.push_back(AddGo(new SpriteGo("graphics/underpipe.png")));
+		underpipe[i]->SetOrigin(Origins::BC);
+
+		underpipe[i]->SetPosition({ i * pipedistance + 1000, 1080 + randhole[i] });
+		underpipe[i]->SetScale({ 1.0f,2.0f });
+	}
+
+
 	TextGo* text = AddGo(new TextGo("fonts/Cafe24Decobox.ttf"));
 	text->SetOrigin(Origins::TL);
 	text->SetPosition({ 0.f,0.f });
@@ -83,6 +79,14 @@ void SceneDev2::Init()
 	}
 
 	Scene::Init();
+
+
+
+
+
+
+
+
 }
 
 void SceneDev2::Enter()
@@ -110,16 +114,40 @@ void SceneDev2::Update(float dt)
 {
 	Scene::Update(dt);
 
+	const float pipespeed = 1000.f * dt; //파이프이동속도
+	for (int i = 0; i < 6; i++)
+	{
+		randhole[i] = (float)(rand() % 750);
+		toppipe[i]->Move(-pipespeed, 0.f);
+		underpipe[i]->Move(-pipespeed, 0.f);
+		
+		if (toppipe[i]->GetPosition().x <= -60.f)
+		{
+			
+			toppipe[i]->SetPosition(sf::Vector2f(3000 ,randhole[i] - 720.f));
+
+		}
+		if (underpipe[i]->GetPosition().x <= -60.f)
+		{
+			underpipe[i]->SetPosition(sf::Vector2f(3000 , randhole[i] + 1080.f));
+
+		}
+
+	}
+
+
+
+
 	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
 	{
 		SCENE_MANAGER.ChangeScene(SceneIds::Dev1);
 	}
 	//파이프 속도
-	
-	
 
 
-	
+
+
+
 
 }
 

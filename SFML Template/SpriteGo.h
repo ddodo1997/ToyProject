@@ -14,9 +14,11 @@ public:
 	void Reset() override;
 	void SetPosition(const sf::Vector2f& pos) override;
 	void Draw(sf::RenderWindow& window) override;
+	sf::Vector2f GetPosition() const;
 
 	void SetOrigin(const sf::Vector2f& origin)override;
 	void SetOrigin(Origins preset)override;
 
 	void SetScale(const sf::Vector2f& scale);
+	void Move(float a, float b);
 };
