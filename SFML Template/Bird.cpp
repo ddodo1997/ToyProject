@@ -31,11 +31,14 @@ void Bird::Reset()
 	if (TextArrow::Location == Arrow::First)
 	{
 		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/bluebird-upflap.png");
+		gravity = 2.f;
+		jumpSpeed = 650.0f;
 		sprite.setTexture(tempTex);
 	}
 	else if (TextArrow::Location == Arrow::Second)
 	{
 		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/redbird-upflap.png");
+		gravity = 2.f;
 		jumpSpeed = 800.f;
 		sprite.setTexture(tempTex);
 	}
@@ -43,6 +46,7 @@ void Bird::Reset()
 	{
 		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/yellowbird-upflap.png");
 		gravity = 4.f;
+		jumpSpeed = 650.0f;
 		sprite.setTexture(tempTex);
 	}
 

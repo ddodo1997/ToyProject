@@ -24,7 +24,7 @@ void SceneDev2::Init()
 		AddGo(new BackGround(i * 640.f, 1080, "graphics/bg_noon.png"));
 	}
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 
 	AddGo(new Pipe("graphics/Toppipe.png", "graphics/underpipe.png"));
 	AddGo(new Bird(1920 / 4, 1080 / 2, "Bird"));
@@ -36,22 +36,12 @@ void SceneDev2::Init()
 
 void SceneDev2::Enter()
 {
-	std::cout << "SceneDev2::Enter()" << std::endl;
-	TEXTURE_MANAGER.Load("graphics/bg_noon.png");
-	TEXTURE_MANAGER.Load("graphics/toppipe.png");
-	TEXTURE_MANAGER.Load("graphics/underpipe.png");
-	FONT_MANAGER.Load("fonts/Cafe24Decobox.ttf");
 	isGameOver = false;
 	Scene::Enter();
 }
 
 void SceneDev2::Exit()
 {
-	std::cout << "SceneDev2::Exit()" << std::endl;
-	TEXTURE_MANAGER.UnLoad("graphics/bg_noon.png");
-	TEXTURE_MANAGER.UnLoad("graphics/toppipe.png");
-	TEXTURE_MANAGER.UnLoad("graphics/underpipe.png");
-	FONT_MANAGER.UnLoad("fonts/Cafe24Decobox.ttf");
 	Scene::Exit();
 }
 
