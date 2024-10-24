@@ -2,13 +2,9 @@
 #include "SceneDev2.h"
 #include "SpriteGo.h"
 #include "TextGo.h"
-<<<<<<< HEAD
-#include "Pipe.h"
 #include "Bird.h"
 #include "BackGround.h"
 #include "Tile.h"
-=======
->>>>>>> origin/main
 #include <time.h>
 SceneDev2::SceneDev2()
 	:Scene(SceneIds::Dev2)
@@ -17,20 +13,10 @@ SceneDev2::SceneDev2()
 
 void SceneDev2::Init()
 {
-	std::cout << "SceneDev2::Init()" << std::endl;
-<<<<<<< HEAD
 	for (int i = 0; i < 4; i++)
 	{
 		AddGo(new BackGround(i * 640.f, 1080, "graphics/bg_noon.png"));
 	}
-#pragma region Backup
-	// srand(time(NULL));
-	
-	////위파이프 위치
-	//float randhole[6];
-=======
-
->>>>>>> origin/main
 
 	srand(time(NULL));
 
@@ -79,14 +65,6 @@ void SceneDev2::Init()
 	}
 
 	Scene::Init();
-
-
-
-
-
-
-
-
 }
 
 void SceneDev2::Enter()
@@ -114,7 +92,7 @@ void SceneDev2::Update(float dt)
 {
 	Scene::Update(dt);
 
-	const float pipespeed = 1000.f * dt; //파이프이동속도
+	const float pipespeed = 300.f * dt; //파이프이동속도
 	for (int i = 0; i < 6; i++)
 	{
 		randhole[i] = (float)(rand() % 750);
