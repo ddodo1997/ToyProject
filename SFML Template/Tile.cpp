@@ -29,10 +29,10 @@ void Tile::Init()
 
 void Tile::Release()
 {
-	for (int i = 0; i < 10; i++)
-	{
-		delete sprite[i];
-	}
+	if(!sprite.empty())
+		for (auto ptr : sprite)
+			delete ptr;
+	sprite.clear();
 }
 
 void Tile::Reset()
