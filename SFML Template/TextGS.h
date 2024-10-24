@@ -5,7 +5,6 @@ class TextGS:public GameObject
 protected:
 	sf::Text text;
 	std::string fontId;
-	bool isTitle;
 public:
 	TextGS(float x, float y, std::string id, std::string name);
 	~TextGS();

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ChooseBirds.h"
+#include "SceneDev1.h"
 ChooseBirds::ChooseBirds(float x, float y, const std::string& id, const std::string& name)
 	:textureId(id), GameObject(name)
 {
@@ -28,22 +29,20 @@ void ChooseBirds::Update(float dt)
 {
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-		if (isTitle)
+		if (!SceneDev1::isTitle)
 		{
 			TEXTURE_MANAGER.Load(textureId);
 			auto& tempTex = TEXTURE_MANAGER.Get(textureId);
 			sprite.setTexture(tempTex);
 			SetOrigin(Origins::MC);
 			SetScale(3.f, 3.f);
-			isTitle = false;
 		}
 	}
 	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
 	{
-		if (!isTitle)
+		if (SceneDev1::isTitle)
 		{
 			SetScale(0.f, 0.f);
-			isTitle = true;
 		}
 	}
 }

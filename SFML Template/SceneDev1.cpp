@@ -9,6 +9,7 @@
 #include "TextGS.h"
 #include "TextArrow.h"
 #include "TextChoose.h"
+bool SceneDev1::isTitle = true;
 SceneDev1::SceneDev1()
 	:Scene(SceneIds::Dev1)
 {
@@ -41,7 +42,7 @@ void SceneDev1::Init()
 		AddGo(new ChooseBirds(1920 / 2, (i % 3 + 5) * 100.f, pathOfBirds[i], "Bird" + std::to_string(i)));
 	}
 	AddGo(new Title(1920 / 2, 1080 / 3, "fonts/FlappyFont.ttf", "Title", "FlappyBird", 120));
-	AddGo(new Title (1920 / 2, 1080 / 1.5f, "fonts/FlappyFont.ttf", "GameStart", "Press Enter To Start!", 80));
+	AddGo(new Title(1920 / 2, 1080 / 1.5f, "fonts/FlappyFont.ttf", "GameStart", "Press Space To Start!", 80));
 
 
 	AddGo(new TextArrow(1920 / 2.4, 470, "fonts/FlappyFont.ttf", "Arrow"));
@@ -57,22 +58,29 @@ void SceneDev1::Enter()
 {
 	std::cout << "SceneDev1::Enter()" << std::endl;
 	arrowIndex = 0;
-	isTitle = true;
 	Scene::Enter();
 }
 
 void SceneDev1::Exit()
 {
-	std::cout << "SceneDev1::Exit()" << std::endl;
 	Scene::Exit();
 }
 
 void SceneDev1::Update(float dt)
 {
-	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
+	if (!isTitle)
 	{
-		SCENE_MANAGER.ChangeScene(SceneIds::Dev2);
+		if (InputMgr::GetKeyDown(sf::Keyboard::Space))
+		{
+			SCENE_MANAGER.ChangeScene(SceneIds::Dev2);
+		}
+		else if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
+		{
+			isTitle = true;
+		}
 	}
+	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
+		isTitle = false;
 
 	Scene::Update(dt);
 }
