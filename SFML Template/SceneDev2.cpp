@@ -3,6 +3,9 @@
 #include "SpriteGo.h"
 #include "TextGo.h"
 #include "Pipe.h"
+#include "Bird.h"
+#include "BackGround.h"
+#include "Tile.h"
 #include <time.h>
 SceneDev2::SceneDev2()
 	:Scene(SceneIds::Dev2)
@@ -12,7 +15,10 @@ SceneDev2::SceneDev2()
 void SceneDev2::Init()
 {
 	std::cout << "SceneDev2::Init()" << std::endl;
-
+	for (int i = 0; i < 4; i++)
+	{
+		AddGo(new BackGround(i * 640.f, 1080, "graphics/bg_noon.png"));
+	}
 #pragma region Backup
 	// srand(time(NULL));
 	
@@ -69,6 +75,13 @@ void SceneDev2::Init()
 	text->SetOrigin(Origins::TL);
 	text->SetPosition({ 0.f,0.f });
 	text->SetString("SCORE = 0");
+
+	AddGo(new Bird(1920 / 4, 1080 / 2 , "Bird"));
+	for (int i = 0; i < 10; i++)
+	{
+		AddGo(new Tile(i * 215.f, 1080, "graphics/tile.png"));
+	}
+
 	Scene::Init();
 }
 

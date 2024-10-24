@@ -159,6 +159,8 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextArrow.cpp" />
+    <ClCompile Include="TextChoose.cpp" />
     <ClCompile Include="TextGo.cpp" />
     <ClCompile Include="TextGS.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -174,6 +176,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputMgr.h" />
     <ClInclude Include="Pipe.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ResourceMgr.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneDev1.h" />
@@ -182,11 +185,16 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SpriteGo.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TextArrow.h" />
+    <ClInclude Include="TextChoose.h" />
     <ClInclude Include="TextGo.h" />
     <ClInclude Include="TextGS.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SFML Template.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

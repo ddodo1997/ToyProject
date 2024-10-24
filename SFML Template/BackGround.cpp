@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "BackGround.h"
-
 BackGround::BackGround(float x, float y, const std::string& id)
 	:textureId(id)
 {

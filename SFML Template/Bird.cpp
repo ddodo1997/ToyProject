@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Bird.h"
-Bird::Bird(float x, float y, const std::string& id, const std::string& name, BirdColor color)
-	:textureId(id), GameObject(name), color(color)
+#include "TextArrow.h"
+Bird::Bird(float x, float y, const std::string& name)
+	:GameObject(name)
 {
 	sprite.setPosition(x, y);
 }
@@ -12,9 +13,8 @@ Bird::~Bird()
 
 void Bird::Init()
 {
-	TEXTURE_MANAGER.Load(textureId);
-	auto& tempTex = TEXTURE_MANAGER.Get(textureId);
-	sprite.setTexture(tempTex);
+	sprite.setScale(2.f, 2.f);
+	originPreset = Origins::MC;
 }
 
 void Bird::Release()
@@ -23,9 +23,25 @@ void Bird::Release()
 
 void Bird::Reset()
 {
-	auto& tempTex = TEXTURE_MANAGER.Get(textureId);
-	sprite.setTexture(tempTex);
-	SetOrigin(originPreset);
+	if (TextArrow::Location == Arrow::First)
+	{
+		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/bluebird-upflap.png");
+		sprite.setTexture(tempTex);
+		SetOrigin(originPreset);
+	}
+	else if (TextArrow::Location == Arrow::Second)
+	{
+		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/redbird-upflap.png");
+		sprite.setTexture(tempTex);
+		SetOrigin(originPreset);
+	}
+	else if (TextArrow::Location == Arrow::Third)
+	{
+		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/yellowbird-upflap.png");
+		sprite.setTexture(tempTex);
+		SetOrigin(originPreset);
+	}
+	
 }
 
 void Bird::Update(float dt)
@@ -37,8 +53,20 @@ void Bird::Update(float dt)
 	
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-       		Jump();
+       	Jump();
 	}
+
+	if (position.y < 24) 
+	{
+		position.y = 24; 
+		velocity.y = 0; 
+	}
+}
+
+void Bird::Jump()
+{
+	
+	velocity.y = -jumpSpeed;
 }
 
 void Bird::Draw(sf::RenderWindow& window)
@@ -47,10 +75,6 @@ void Bird::Draw(sf::RenderWindow& window)
 	window.draw(sprite);
 }
 
-void Bird::Jump()
-{
-	velocity.y = -jumpSpeed;
-}
 
 void Bird::SetPosition(const sf::Vector2f& position)
 {

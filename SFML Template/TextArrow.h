@@ -1,15 +1,18 @@
 #pragma once
-class Title
-	:public GameObject
+#include "GameObject.h"
+class TextArrow :
+    public GameObject
 {
 protected:
 	sf::Text text;
 	std::string fontId;
-	bool isTitle;
+	bool isChoose = false;
+
 public:
-	Title(float x, float y, std::string id, std::string name , std::string str, int size);
-	~Title();	
-	
+	static Arrow Location;
+	TextArrow(float x, float y, std::string id, std::string name);
+	~TextArrow();
+
 	void Init() override;
 	void Release() override;
 	void Reset() override;
@@ -20,5 +23,6 @@ public:
 	void SetOrigin(const sf::Vector2f& origin)override;
 	void SetOrigin(Origins preset)override;
 	void SetCharacterSize(int size);
+
 };
 

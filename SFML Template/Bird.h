@@ -6,14 +6,12 @@ class Bird :
 {
 private:
 	sf::Sprite sprite;
-	std::string textureId;
-	BirdColor color;
 
 	sf::Vector2f velocity;
-	float gravity = 1.5f;
-	float jumpSpeed = 600.0f;
+	float gravity = 2.f;
+	float jumpSpeed = 500.0f;
 public:
-	Bird(float x, float y, const std::string& id, const std::string& name, BirdColor color);
+	Bird(float x, float y, const std::string& name);
 	virtual ~Bird();
 
 	void Init() override;
