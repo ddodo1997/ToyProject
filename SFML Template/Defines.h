@@ -32,3 +32,13 @@ enum class Origins {
 
 	OriginCnt
 };
+
+
+/// <summary>
+/// 플래피 버드의 색깔
+/// </summary>
+enum class BirdColor {
+	Blue,
+	Red,
+	Yellow
+};

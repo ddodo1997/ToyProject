@@ -26,7 +26,6 @@ public:
 		originPreset = Origins::Custom;
 	}
 	virtual void SetOrigin(Origins preset);
-
 	const std::string& GetName() const { return name; }
 	virtual void SetName(const std::string& name) {this->name = name;}
 	//처음 생성할 때, 초기화 함

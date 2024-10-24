@@ -1,27 +1,20 @@
 #pragma once
 #include "GameObject.h"
-
-class Bird :
-	public GameObject
+class ChooseBirds :
+    public GameObject
 {
-private:
 	sf::Sprite sprite;
 	std::string textureId;
-	BirdColor color;
-
-	sf::Vector2f velocity;
-	float gravity = 1.5f;
-	float jumpSpeed = 600.0f;
+	bool isTitle = true;
 public:
-	Bird(float x, float y, const std::string& id, const std::string& name, BirdColor color);
-	virtual ~Bird();
+	ChooseBirds(float x, float y, const std::string& id, const std::string& name);
+	virtual ~ChooseBirds();
 
 	void Init() override;
 	void Release() override;
 	void Reset() override;
 	void Update(float dt) override;
 	void Draw(sf::RenderWindow& window) override;
-	void Jump();
 	void SetPosition(const sf::Vector2f& position) override;
 	void SetOrigin(const sf::Vector2f& origin) override;
 	void SetOrigin(Origins preset) override;
