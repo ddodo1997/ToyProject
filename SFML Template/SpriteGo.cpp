@@ -25,6 +25,11 @@ void SpriteGo::Draw(sf::RenderWindow& window)
 	window.draw(sprite);
 }
 
+sf::Vector2f SpriteGo::GetPosition() const
+{
+	return sprite.getPosition();
+}
+
 void SpriteGo::SetOrigin(const sf::Vector2f& origin)
 {
 	originPreset = Origins::Custom;
@@ -41,4 +46,9 @@ void SpriteGo::SetOrigin(Origins preset)
 void SpriteGo::SetScale(const sf::Vector2f& scale)
 {
 	sprite.setScale(scale);
+}
+
+void SpriteGo::Move(float a,float b)
+{
+	sprite.move(a,b);
 }

@@ -54,9 +54,6 @@
     <ClCompile Include="Bird.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Pipe.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -117,9 +114,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Bird.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Pipe.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
