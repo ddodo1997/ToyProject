@@ -5,7 +5,12 @@
 #include "Bird.h"
 #include "BackGround.h"
 #include "Tile.h"
+#include "GameOverText.h"
+#include "Score.h"
 #include <time.h>
+
+bool SceneDev2::isGameOver = false;
+
 SceneDev2::SceneDev2()
 	:Scene(SceneIds::Dev2)
 {
@@ -40,7 +45,7 @@ void SceneDev2::Init()
 	}
 
 	//아래쪽파이프
-	
+
 	const int underpipetex = 6;
 	//아래파이프 위치
 	for (int i = 0; i < underpipetex; ++i)
@@ -58,12 +63,10 @@ void SceneDev2::Init()
 	text->SetPosition({ 0.f,0.f });
 	text->SetString("SCORE = 0");
 
-	AddGo(new Bird(1920 / 4, 1080 / 2 , "Bird"));
-	for (int i = 0; i < 10; i++)
-	{
-		AddGo(new Tile(i * 215.f, 1080, "graphics/tile.png"));
-	}
-
+	AddGo(new Bird(1920 / 4, 1080 / 2, "Bird"));
+	AddGo(new Tile(215.f, 1080, "graphics/tile.png"));
+	AddGo(new GameOverText("fonts/FlappyFont.ttf","GameOver"));
+	AddGo(new Score("fonts/FlappyFont.ttf", "Score"));
 	Scene::Init();
 }
 
@@ -74,6 +77,7 @@ void SceneDev2::Enter()
 	TEXTURE_MANAGER.Load("graphics/toppipe.png");
 	TEXTURE_MANAGER.Load("graphics/underpipe.png");
 	FONT_MANAGER.Load("fonts/Cafe24Decobox.ttf");
+	isGameOver = false;
 	Scene::Enter();
 }
 
@@ -85,48 +89,41 @@ void SceneDev2::Exit()
 	TEXTURE_MANAGER.UnLoad("graphics/underpipe.png");
 	FONT_MANAGER.UnLoad("fonts/Cafe24Decobox.ttf");
 	Scene::Exit();
-
 }
 
 void SceneDev2::Update(float dt)
 {
-	Scene::Update(dt);
-
 	const float pipespeed = 300.f * dt; //파이프이동속도
+	if (isGameOver)
+	{
+		if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
+			SCENE_MANAGER.ChangeScene(SceneIds::Dev1);
+		return;
+	}
+
 	for (int i = 0; i < 6; i++)
 	{
 		randhole[i] = (float)(rand() % 750);
 		toppipe[i]->Move(-pipespeed, 0.f);
 		underpipe[i]->Move(-pipespeed, 0.f);
-		
+
 		if (toppipe[i]->GetPosition().x <= -60.f)
 		{
-			
-			toppipe[i]->SetPosition(sf::Vector2f(3000 ,randhole[i] - 720.f));
+
+			toppipe[i]->SetPosition(sf::Vector2f(3000, randhole[i] - 720.f));
 
 		}
 		if (underpipe[i]->GetPosition().x <= -60.f)
 		{
-			underpipe[i]->SetPosition(sf::Vector2f(3000 , randhole[i] + 1080.f));
+			underpipe[i]->SetPosition(sf::Vector2f(3000, randhole[i] + 1080.f));
 
 		}
-
-	}
-
-
-
-
-	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
-	{
-		SCENE_MANAGER.ChangeScene(SceneIds::Dev1);
 	}
 	//파이프 속도
 
 
 
-
-
-
+	Scene::Update(dt);
 }
 
 void SceneDev2::Draw(sf::RenderWindow& window)

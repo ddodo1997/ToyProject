@@ -6,10 +6,11 @@ class Bird :
 {
 private:
 	sf::Sprite sprite;
-
+	float x, y;
 	sf::Vector2f velocity;
 	float gravity = 2.f;
-	float jumpSpeed = 500.0f;
+	float jumpSpeed = 650.0f;
+
 public:
 	Bird(float x, float y, const std::string& name);
 	virtual ~Bird();

@@ -1,17 +1,14 @@
 #pragma once
 #include "GameObject.h"
-class Score :
+class GameOverText :
     public GameObject
 {
 protected:
 	sf::Text text;
 	std::string fontId;
-
-	float time;
-	int score;
 public:
-	Score(std::string id, std::string name);
-	~Score();
+	GameOverText(std::string id, std::string name);
+	~GameOverText();
 
 	void Init() override;
 	void Release() override;
@@ -24,3 +21,4 @@ public:
 	void SetOrigin(Origins preset)override;
 	void SetCharacterSize(int size);
 };
+

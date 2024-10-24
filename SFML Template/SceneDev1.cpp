@@ -22,10 +22,9 @@ void SceneDev1::Init()
 		AddGo(new BackGround(i * 640.f, 1080, "graphics/bg_night.png"));
 	}
 
-	for (int i = 0; i < numOfTiles; i++)
-	{
-		AddGo(new Tile(i * 215.f, 1080, "graphics/tile.png"));
-	}
+
+	AddGo(new Tile(215.f, 1080, "graphics/tile.png"));
+
 
 	std::string filename = "config/sprites.txt";
 	std::ifstream infile(filename);

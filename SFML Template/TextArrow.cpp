@@ -57,7 +57,7 @@ void TextArrow::Update(float dt)
 			SetCharacterSize(50);
 			isChoose = true;
 			Location = Arrow::First;
-			SetPosition({ 1920 / 2.4, 470 });
+			SetPosition({ 1920 / 2.4, 475 });
 		}
 	}
 	if (isChoose)

@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "Bird.h"
 #include "TextArrow.h"
+#include "SceneDev2.h"
+#include "Tile.h"
 Bird::Bird(float x, float y, const std::string& name)
-	:GameObject(name)
+	:GameObject(name), x(x), y(y)
 {
-	sprite.setPosition(x, y);
 }
 
 Bird::~Bird()
@@ -23,49 +24,70 @@ void Bird::Release()
 
 void Bird::Reset()
 {
+	velocity.y = 0;
+	SetOrigin(originPreset);
+	SetPosition({ x,y });
 	if (TextArrow::Location == Arrow::First)
 	{
 		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/bluebird-upflap.png");
 		sprite.setTexture(tempTex);
-		SetOrigin(originPreset);
 	}
 	else if (TextArrow::Location == Arrow::Second)
 	{
 		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/redbird-upflap.png");
 		sprite.setTexture(tempTex);
-		SetOrigin(originPreset);
 	}
 	else if (TextArrow::Location == Arrow::Third)
 	{
 		auto& tempTex = TEXTURE_MANAGER.Get("graphics/birds/yellowbird-upflap.png");
 		sprite.setTexture(tempTex);
-		SetOrigin(originPreset);
 	}
-	
+
 }
 
 void Bird::Update(float dt)
 {
+	if (SceneDev2::isGameOver)
+	{
+		sprite.setColor(sf::Color::Red);
+		return;
+	}
+
+	std::vector<sf::FloatRect> tiles;
+	for (int i = 0; i < 10; i++)
+	{
+		tiles.push_back(Tile::sprite[i]->getGlobalBounds());
+		if (tiles[i].intersects(sprite.getGlobalBounds()))
+			SceneDev2::isGameOver = true;
+	}
+
+	std::vector<sf::FloatRect> pipes;
+	for (int i = 0; i < 10; i++)
+	{
+		pipes.push_back(Tile::sprite[i]->getGlobalBounds());
+		if (pipes[i].intersects(sprite.getGlobalBounds()))
+			SceneDev2::isGameOver = true;
+	}
+
 	sf::Vector2f position = sprite.getPosition();
 	velocity.y += gravity + dt;
 	position += velocity * dt;
 	sprite.setPosition(position);
-	
+
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-       	Jump();
+		Jump();
 	}
 
-	if (position.y < 24) 
+	if (position.y < 24)
 	{
-		position.y = 24; 
-		velocity.y = 0; 
+		position.y = 24;
+		velocity.y = 0;
 	}
 }
 
 void Bird::Jump()
 {
-	
 	velocity.y = -jumpSpeed;
 }
 

@@ -7,6 +7,7 @@ Pipe::Pipe(const std::string& texId, const std::string& name)
 
 void Pipe::Init()
 {
+	
 }
 
 void Pipe::Release()
@@ -35,4 +36,6 @@ void Pipe::SetOrigin(const sf::Vector2f& origin)
 
 void Pipe::SetOrigin(Origins preset)
 {
+	originPreset = preset;
+	Utils::SetOrigin(sprite, preset);
 }
