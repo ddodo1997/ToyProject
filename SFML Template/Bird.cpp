@@ -3,6 +3,7 @@
 #include "TextArrow.h"
 #include "SceneDev2.h"
 #include "Tile.h"
+#include "Pipe.h"
 Bird::Bird(float x, float y, const std::string& name)
 	:GameObject(name), x(x), y(y)
 {
@@ -61,11 +62,19 @@ void Bird::Update(float dt)
 			SceneDev2::isGameOver = true;
 	}
 
-	std::vector<sf::FloatRect> pipes;
+	std::vector<sf::FloatRect> upperPipes;
 	for (int i = 0; i < 10; i++)
 	{
-		pipes.push_back(Tile::sprite[i]->getGlobalBounds());
-		if (pipes[i].intersects(sprite.getGlobalBounds()))
+		upperPipes.push_back(Pipe::sprite[i].getGlobalBounds());
+		if (upperPipes[i].intersects(sprite.getGlobalBounds()))
+			SceneDev2::isGameOver = true;
+	}
+
+	std::vector<sf::FloatRect> underPipes;
+	for (int i = 0; i < 10; i++)
+	{
+		underPipes.push_back(Pipe::sprite2[i].getGlobalBounds());
+		if (underPipes[i].intersects(sprite.getGlobalBounds()))
 			SceneDev2::isGameOver = true;
 	}
 

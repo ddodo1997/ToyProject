@@ -1,23 +1,17 @@
 #include "stdafx.h"
 #include "Pipe.h"
-
-
+sf::Sprite Pipe::sprite[6];
+sf::Sprite Pipe::sprite2[6];
 Pipe::Pipe(const std::string& texIdUpper,const std::string& texIdUnder, const std::string& name)
 	:textIdUpper(texIdUpper), textIdUnder(texIdUnder)
 {
 }
 
-
-
 void Pipe::Init()
 {
-<<<<<<< HEAD
-	
-=======
 	TEXTURE_MANAGER.Load(textIdUpper);
 	TEXTURE_MANAGER.Load(textIdUnder);
 	srand(time(NULL));
->>>>>>> adbecd8c6446608a0baf8c670061eb94e6af6b90
 }
 
 void Pipe::Release()
@@ -87,13 +81,9 @@ void Pipe::SetOrigin(const sf::Vector2f& origin)
 void Pipe::SetOrigin(sf::Sprite sprite[], Origins preset)
 {
 	originPreset = preset;
-<<<<<<< HEAD
-	Utils::SetOrigin(sprite, preset);
-=======
 	for (int i = 0; i < 6; i++)
 	{
 		Utils::SetOrigin(sprite[i], preset);
 	}
->>>>>>> adbecd8c6446608a0baf8c670061eb94e6af6b90
 }
 

@@ -4,13 +4,12 @@ class Pipe :
     public GameObject
 {
 protected:
-	sf::Sprite sprite[6];
-	sf::Sprite sprite2[6];
-
 	std::string textIdUpper, textIdUnder;
 
 	float random[6];
 public:
+	static sf::Sprite sprite[6];
+	static sf::Sprite sprite2[6];
 	
 	Pipe(const std::string& textIdUpper, const std::string& textIdUnder,  const std::string& name = "");
 	~Pipe() = default;
