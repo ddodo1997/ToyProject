@@ -4,13 +4,16 @@ class Pipe :
     public GameObject
 {
 protected:
-	sf::Sprite sprite;
-	std::string textureId;
+	sf::Sprite sprite[6];
+	sf::Sprite sprite2[6];
 
+	std::string textIdUpper, textIdUnder;
+
+	float random[6];
 public:
-	Pipe(const std::string& texId, const std::string& name = "");
+	
+	Pipe(const std::string& textIdUpper, const std::string& textIdUnder,  const std::string& name = "");
 	~Pipe() = default;
-
 
 	void Init() override;
 	void Release() override;
@@ -19,6 +22,7 @@ public:
 	void Draw(sf::RenderWindow& window) override;
 	void SetPosition(const sf::Vector2f& position) override;
 	void SetOrigin(const sf::Vector2f& origin) override;
-	void SetOrigin(Origins preset) override;
+	void SetOrigin(sf::Sprite sprite[], Origins preset);
+	
 };
 
