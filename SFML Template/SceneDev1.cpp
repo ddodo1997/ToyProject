@@ -56,7 +56,6 @@ void SceneDev1::Init()
 
 void SceneDev1::Enter()
 {
-	std::cout << "SceneDev1::Enter()" << std::endl;
 	arrowIndex = 0;
 	Scene::Enter();
 }

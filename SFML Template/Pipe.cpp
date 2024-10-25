@@ -27,7 +27,7 @@ void Pipe::Reset()
 	{
 		random[i] = rand() % 750;
 		sprite[i].setTexture(texPipeUpper);
-		sprite[i].setPosition(sf::Vector2f(1000 + (500 * i),-720+ random[i]));
+		sprite[i].setPosition(sf::Vector2f(1000 + (500 * i),-770+ random[i]));
 		sprite[i].setScale(1.f, 2.f);
 
 		sprite2[i].setTexture(texPipeUnder);
@@ -47,7 +47,7 @@ void Pipe::Update(float dt)
 		sprite2[i].move(-toppipespeed, 0.f);
 		if (sprite[i].getPosition().x <= -60.f)
 		{
-			sprite[i].setPosition(sf::Vector2f(3000, random[i] - 720.f));
+			sprite[i].setPosition(sf::Vector2f(3000, random[i] - 770.f));
 		}
 		if (sprite2[i].getPosition().x <= -60.f)
 		{
